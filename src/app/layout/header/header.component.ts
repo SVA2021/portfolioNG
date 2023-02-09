@@ -7,14 +7,24 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  name = 'sva'
-  nameArray: string [] = []
+  nameArray: string [] = 'sva'.split('')
+
+  menuLinks: MenuItemT[] = [
+    {href: '/', title: 'pages',},
+    {href: '/projects', title: 'projects',},
+    {href: '/about', title: 'about me',},
+    {href: '/contacts', title: 'contacts',},
+  ]
 
   constructor() {
   }
 
   ngOnInit(): void {
-    this.nameArray = this.name.split('')
   }
 
+}
+
+type MenuItemT = {
+  href: string
+  title: string
 }
