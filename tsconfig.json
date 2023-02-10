@@ -25,6 +25,7 @@
     "paths": {
       "@components": ["src/app/shared/components/*"],
       "@directives": ["src/app/shared/directives/*"],
+      "@assets": ["src/assets/*"],
     }
   },
   "angularCompilerOptions": {
