@@ -1,0 +1,14 @@
+<section class="hero">
+  <h1 class="hero__name">
+    <app-hero-word *ngFor="let name of fullName" [word]="name"></app-hero-word>
+  </h1>
+  <div class="hero__profession">{{profession}}</div>
+  <ul class="hero__social">
+    <li class="hero__item" *ngFor="let link of links">
+      <a [href]="link.href" target="_blank" class="hero__link">
+        <app-svg-icon [id]="link.id" [path]="link.src"></app-svg-icon>
+        <span class="hero__span">{{link.id}}</span>
+      </a>
+    </li>
+  </ul>
+</section>
