@@ -1,0 +1,55 @@
+<section class="section__offset about">
+  <h2 class="section__header">{{title}}</h2>
+  <div class="about__inner">
+    <div class="about__bio">
+      <h3 class="header__subtitle">{{bioTitle}}</h3>
+      <p>{{bioFull}}</p>
+    </div>
+    <div class="about__skills">
+      <h3 class="header__subtitle">{{skillTitle}}</h3>
+      <div class="skills__set">
+        <!--        <app-svg-icon path="'assets/skills.svg'" id="markdown" ]></app-svg-icon>-->
+
+        <ng-template *ngFor="let skill of mySkills">
+          <app-svg-icon [path]="iconSrc" id="git" ]></app-svg-icon>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <div class="about__stats">
+    <h4 class="header__subtitle">GitHub stats</h4>
+    <div class="about__stats--wrapper">
+      <a target="_blank" href="https://github.com/SVA2021" class="about__link">
+        <img class="about__img"
+             src="https://github-readme-stats.vercel.app/api?username=SVA2021&show_icons=true&include_all_commits=true&theme=dark&hide=issues&hide_border=true"
+             alt="GitHub main stats">
+      </a>
+      <a target="_blank" href="https://github.com/SVA2021" class="about__link">
+        <img class="about__img"
+             src="https://github-readme-stats.vercel.app/api/top-langs/?username=SVA2021&count_private=true&include_all_commits=true&theme=dark&layout=compact&hide_border=true"
+             alt="GitHub most used languages stats">
+      </a>
+    </div>
+  </div>
+  <div class="about__stats">
+    <h4 class="header__subtitle">certificates</h4>
+    <a target="_blank" href="./certificates.html" class="about__link">
+      <picture class="about__pic">
+        <source media="(max-width: 420px)" srcset="./img/certificates/certificates_combo_360.webp"
+                type="image/webp">
+        <source media="(max-width: 420px)" srcset="./img/certificates/certificates_combo_360.png" type="image/png">
+        <source media="(max-width: 800px)" srcset="./img/certificates/certificates_combo_600.webp"
+                type="image/webp">
+        <source media="(max-width: 800px)" srcset="./img/certificates/certificates_combo_600.png" type="image/png">
+        <source media="(max-width: 1450px)" srcset="./img/certificates/certificates_combo_1200.webp"
+                type="image/webp">
+        <source media="(max-width: 1450px)" srcset="./img/certificates/certificates_combo_1200.png"
+                type="image/png">
+        <source srcset="./img/certificates/certificates_combo_1800.webp" type="image/webp">
+        <img class="about__img certificates" src="./img/certificates/certificates_combo_1800.png"
+             alt="certificates combo" loading="lazy">
+      </picture>
+      <span class="about__tip">see all in new window</span>
+    </a>
+  </div>
+</section>

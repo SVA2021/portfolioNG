@@ -5,11 +5,13 @@ import {LayoutModule} from "./layout/layout.module";
 import {AppRoutingModule} from "./app-routing.module";
 import {HomePageComponent} from "./pages/home-page/home-page.component";
 import {SharedModule} from "./shared/shared.module";
+import { AboutPageComponent } from './pages/about-page/about-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
+    AboutPageComponent,
   ],
   imports: [
     BrowserModule,
