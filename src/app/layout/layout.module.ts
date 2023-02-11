@@ -1,10 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { LayoutComponent } from './layout/layout.component';
-import {HeaderComponent} from "./header/header.component";
-import {FooterComponent} from "./footer/footer.component";
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {LayoutComponent} from './components/layout/layout.component';
+import {HeaderComponent} from "./components/header/header.component";
+import {FooterComponent} from "./components/footer/footer.component";
 import {RouterLinkWithHref, RouterOutlet} from "@angular/router";
-
 
 
 @NgModule({
@@ -13,13 +12,14 @@ import {RouterLinkWithHref, RouterOutlet} from "@angular/router";
     HeaderComponent,
     FooterComponent
   ],
-    imports: [
-        CommonModule,
-        RouterOutlet,
-        RouterLinkWithHref
-    ],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    RouterLinkWithHref
+  ],
   exports: [
     LayoutComponent
   ]
 })
-export class LayoutModule { }
+export class LayoutModule {
+}
