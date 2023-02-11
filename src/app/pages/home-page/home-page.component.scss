@@ -2,7 +2,15 @@
 @import 'mixins';
 
 .hero {
-  margin: 4vw auto;
+  margin: 0 auto;
+}
+
+.hero__name {
+  margin-top: 3rem;
+
+  @include media-lg {
+    margin-top: 3rem;
+  }
 }
 
 .hero__profession {

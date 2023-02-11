@@ -18,11 +18,11 @@
 
   @include media-lg {
     -webkit-text-stroke: 2px $light;
-    font-size: 6rem;
+    font-size: 5rem;
   }
 
   @include media-xl {
-    font-size: 8rem;
+    font-size: 6rem;
   }
 
   &:hover {
