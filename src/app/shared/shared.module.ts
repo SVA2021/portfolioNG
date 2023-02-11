@@ -1,12 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {HeroWordComponent, SvgIconComponent} from "./components";
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    HeroWordComponent,
+    SvgIconComponent,
+  ],
   imports: [
-    CommonModule
+    CommonModule,
+  ],
+  exports: [
+    HeroWordComponent,
+    SvgIconComponent,
   ]
 })
 export class SharedModule { }
