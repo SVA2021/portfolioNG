@@ -27,8 +27,15 @@
   margin: $offset-basic *8 auto;
 
   @include media-lg {
-    width: 30%;
+    width: 45%;
   }
+}
+
+.skills__set {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 }
 
 .about__stats {
