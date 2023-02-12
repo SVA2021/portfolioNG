@@ -6,6 +6,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import {HomePageComponent} from "./pages/home-page/home-page.component";
 import {SharedModule} from "./shared/shared.module";
 import { AboutPageComponent } from './pages/about-page/about-page.component';
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AboutPageComponent } from './pages/about-page/about-page.component';
     LayoutModule,
     AppRoutingModule,
     SharedModule,
+    NgOptimizedImage,
   ],
   providers: [],
   bootstrap: [AppComponent]
