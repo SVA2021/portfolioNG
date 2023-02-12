@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {HeroWordComponent, SvgIconComponent} from "./components";
-
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {HeroWordComponent, SectionTitleComponent, SubtitleComponent, SvgIconComponent} from "./components";
 
 
 @NgModule({
   declarations: [
     HeroWordComponent,
     SvgIconComponent,
+    SectionTitleComponent,
+    SubtitleComponent,
   ],
   imports: [
     CommonModule,
@@ -15,6 +16,9 @@ import {HeroWordComponent, SvgIconComponent} from "./components";
   exports: [
     HeroWordComponent,
     SvgIconComponent,
+    SectionTitleComponent,
+    SubtitleComponent,
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+}
