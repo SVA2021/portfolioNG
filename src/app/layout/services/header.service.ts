@@ -1,29 +1,40 @@
 import {Injectable} from '@angular/core';
-import {MenuItemI} from "../interfaces/header";
+import {HeaderLogo, HeaderMenu,} from "../interfaces/header";
 
 @Injectable({
   providedIn: 'root'
 })
 export class HeaderService {
 
-  get menuLinks(): MenuItemI[] {
+  get menuLinks(): HeaderMenu {
     return this._menuLinks;
   }
 
-  get logo(): string[] {
+  get logo(): HeaderLogo {
     return this._logo;
   }
 
-  private readonly _logo: string[];
-  private readonly _menuLinks: MenuItemI[];
+  private readonly _logo: HeaderLogo;
+  private readonly _menuLinks: HeaderMenu;
 
   constructor() {
-    this._logo = 'sva'.split('');
-    this._menuLinks = [
-      {href: '/', title: 'home',},
-      {href: '/projects', title: 'projects',},
-      {href: '/about', title: 'about me',},
-      {href: '/contacts', title: 'contacts',},
-    ];
+    this._logo = {
+      en: 'sva',
+      ru: 'сва',
+    };
+    this._menuLinks = {
+      en: [
+        {href: '/', title: 'home',},
+        {href: '/projects', title: 'projects',},
+        {href: '/about', title: 'about me',},
+        {href: '/contacts', title: 'contacts',},
+      ],
+      ru: [
+        {href: '/', title: 'начало',},
+        {href: '/projects', title: 'проекты',},
+        {href: '/about', title: 'обо мне',},
+        {href: '/contacts', title: 'контакты',},
+      ],
+    }
   }
 }

@@ -108,6 +108,7 @@
   text-transform: uppercase;
   color: $light;
   transition: transform 0.25s ease-in-out;
+  background-color: transparent;
 
   &:hover {
     color: $dark;

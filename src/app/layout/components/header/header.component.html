@@ -2,16 +2,16 @@
   <div class="header__logo logo">
     <span class="logo__item" *ngFor="let letter of nameArray">{{letter}}</span>
   </div>
-
   <nav class="header__menu menu">
     <ul class="menu__body">
       <li class="menu__item" *ngFor="let menuItem of menuLinks">
         <a [routerLink]="menuItem.href" class="menu__link">{{menuItem.title}}</a>
       </li>
-      <!--      todo add lang switcher-->
       <!--      todo add download link for cv-->
       <!--      todo change menu to Angular Material component-->
-      <!--      <li class="menu__item"><a href="./index_ru.html" class="menu__link">Ru</a></li>-->
+      <li class="menu__item">
+        <button class="menu__link" (click)="toggleLang()">{{activeLang | titlecase}}</button>
+      </li>
       <!--      <li class="menu__item cv">-->
       <!--        <a href="./Sofronov_Vitaliy_FrontEnd_Developer_170123.pdf" class="menu__link" download>my CV</a>-->
       <!--      </li>-->
