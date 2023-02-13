@@ -17,11 +17,8 @@ export class LangService {
     this._activeLang$.next('en');
   }
 
-  toggleLang(): void {
-    this.activeLang$.subscribe((v) => {
-      let newLang: langT = v === 'en' ? 'ru' : 'en';
-      this._activeLang$.next(newLang);
-    })
+  toggleLang(newLang: langT): void {
+    this._activeLang$.next(newLang);
   }
 
 }
