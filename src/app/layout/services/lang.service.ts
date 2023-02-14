@@ -6,19 +6,23 @@ import {langT} from "../interfaces/lang";
   providedIn: 'root'
 })
 export class LangService {
-  get activeLang$(): Subject<langT> {
-    return this._activeLang$;
+  get lastLang(): langT {
+    return this._lastLang;
   }
 
-  private readonly _activeLang$: Subject<langT>
+  activeLang$: Subject<langT>
+  private _lastLang: langT
 
   constructor() {
-    this._activeLang$ = new Subject<langT>();
-    this._activeLang$.next('en');
+    this._lastLang = 'en';
+    this.activeLang$ = new Subject<langT>();
+    this.activeLang$.next('en');
+    this.activeLang$.subscribe(lang => this._lastLang = lang);
   }
 
-  toggleLang(newLang: langT): void {
-    this._activeLang$.next(newLang);
+  toggleLang(): void {
+    let newLang: langT = this.lastLang === 'en' ? 'ru' : 'en';
+    this.activeLang$.next(newLang);
   }
 
 }

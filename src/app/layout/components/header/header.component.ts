@@ -3,6 +3,7 @@ import {MenuItemI} from "../../interfaces/header";
 import {HeaderService} from "../../services/header.service";
 import {langT} from "../../interfaces/lang";
 import {LangService} from "../../services/lang.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-header',
@@ -14,18 +15,20 @@ export class HeaderComponent implements OnInit, OnDestroy {
   nameArray: string []
   menuLinks: MenuItemI[]
   activeLang: langT
+  myLang$: Subscription
 
   constructor(
     public header: HeaderService,
     public lang: LangService,
   ) {
-    this.activeLang = 'en';
+    this.myLang$ = Subscription.EMPTY;
+    this.activeLang = this.lang.lastLang;
     this.nameArray = this.header.logo[this.activeLang].split('') ?? [];
     this.menuLinks = this.header.menuLinks[this.activeLang] ?? [];
   }
 
   ngOnInit(): void {
-    this.lang.activeLang$.subscribe(lang => {
+    this.myLang$ = this.lang.activeLang$.subscribe(lang => {
       this.activeLang = lang;
       this.nameArray = this.header.logo[lang].split('');
       this.menuLinks = this.header.menuLinks[lang];
@@ -33,12 +36,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   toggleLang() {
-    let newLang: langT = this.activeLang === 'en' ? 'ru' : 'en';
-    this.lang.toggleLang(newLang);
+    this.lang.toggleLang();
   }
 
   ngOnDestroy(): void {
-    this.lang.activeLang$.unsubscribe();
+    this.myLang$.unsubscribe();
   }
 
 }
