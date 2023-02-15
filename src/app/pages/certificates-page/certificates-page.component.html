@@ -1,0 +1,42 @@
+<app-section-title [title]="titles.title"></app-section-title>
+<section class="geekbrains">
+  <app-subtitle title="geekbrains.ru"></app-subtitle>
+  <ul class="gallery">
+    <li class="gallery__item" *ngFor="let item of gb">
+      <a class="gallery__link" target="_blank" [href]="item.href">
+        <p class="gallery__caption" [innerHTML]="item.caption"></p>
+        <img class="gallery__img" [ngSrc]="item.imgSrc" [alt]="item.imgAlt" width="300" height="220" priority>
+        <p class="gallery__tooltip">{{titles.gbTip}}</p>
+      </a>
+    </li>
+  </ul>
+</section>
+<section class="sololearn">
+  <app-subtitle title="sololearn.com"></app-subtitle>
+  <ul class="gallery">
+    <li class="gallery__item" *ngFor="let item of sl">
+      <a class="gallery__link" target="_blank" href="https://www.sololearn.com/Certificate/1014-20193310/jpg/">
+        <p class="gallery__caption" [innerHTML]="item.caption"></p>
+        <img class="gallery__img" [ngSrc]="item.imgSrc" [alt]="item.imgAlt" width="815" height="575" priority>
+        <p class="gallery__tooltip">{{titles.slTip}}</p>
+      </a>
+    </li>
+  </ul>
+</section>
+<section class="other">
+  <app-subtitle title="other"></app-subtitle>
+  <app-subtitle title="w3schools.com" type="h4"></app-subtitle>
+  <ul class="gallery">
+    <li class="gallery__item" *ngFor="let item of w3s">
+      <p class="gallery__caption" [innerHTML]="item.caption"></p>
+      <img class="gallery__img" [ngSrc]="item.imgSrc" [alt]="item.imgAlt" width="1748" height="617" priority>
+    </li>
+  </ul>
+  <app-subtitle title="learn.javascript.ru" type="h4"></app-subtitle>
+  <ul class="gallery">
+    <li class="gallery__item" *ngFor="let item of learnJS">
+      <p class="gallery__caption" [innerHTML]="item.caption"></p>
+      <img class="gallery__img" [ngSrc]="item.imgSrc" [alt]="item.imgAlt" width="1741" height="513" priority>
+    </li>
+  </ul>
+</section>
