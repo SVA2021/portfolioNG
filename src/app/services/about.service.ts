@@ -47,7 +47,7 @@ export class AboutService {
       'html5', 'css3', 'js', 'git', 'markdown', 'cssModules', 'react', 'redux', 'sass', 'typescript',
     ];
     this._svgIconSrc = 'assets/skills.svg';
-    this._certificateImgSrc = 'assets/certificates_combo_1800.png';
+    this._certificateImgSrc = 'https://ik.imagekit.io/sva/certificates/certificates_combo_1800.png';
 
     this._common = {
       en: {

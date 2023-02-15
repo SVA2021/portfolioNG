@@ -26,7 +26,8 @@
   <div class="about__stats">
     <app-subtitle [title]="certificateTitle" type="h4"></app-subtitle>
     <a routerLink="/certificates" class="about__link">
-      <img class="about__img" [src]="certificateImgSrc" [alt]="certificateImgAlt">
+      <img class="about__img" [ngSrc]="certificateImgSrc" [alt]="certificateImgAlt"
+           width="1800" height="500" priority>
       <span class="about__tip">{{certificateTip}}</span>
     </a>
   </div>
