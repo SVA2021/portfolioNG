@@ -7,12 +7,15 @@ import {HomePageComponent} from "./pages/home-page/home-page.component";
 import {SharedModule} from "./shared/shared.module";
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import {NgOptimizedImage} from "@angular/common";
+import { ContactPageComponent } from './pages/contact-page/contact-page.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     AboutPageComponent,
+    ContactPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -20,6 +23,7 @@ import {NgOptimizedImage} from "@angular/common";
     AppRoutingModule,
     SharedModule,
     NgOptimizedImage,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

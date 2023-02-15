@@ -1,0 +1,19 @@
+<section class="contacts">
+  <app-section-title [title]="title"></app-section-title>
+  <div class="contacts__inner">
+    <div class="contacts__form form__wrapper">
+      <app-contact-form></app-contact-form>
+    </div>
+    <div class="contacts__links social">
+      <ul class="social__body">
+        <li class="social__item" *ngFor="let item of contacts">
+          <a [href]="item.href" class="social__link">
+            <app-svg-icon [path]="svgIconSrc" [id]="item.type" [small]="true" class="social__svg"></app-svg-icon>
+            <p class="social__title">{{item.type}}</p>
+            <p class="social__data">{{item.data}}</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
