@@ -1,1 +1,1 @@
-export {}
+export * from './contact-form.service';

@@ -1,6 +1,13 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {HeroWordComponent, SectionTitleComponent, SubtitleComponent, SvgIconComponent} from "./components";
+import {
+  ContactFormComponent,
+  HeroWordComponent,
+  SectionTitleComponent,
+  SubtitleComponent,
+  SvgIconComponent
+} from "./components";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -9,15 +16,18 @@ import {HeroWordComponent, SectionTitleComponent, SubtitleComponent, SvgIconComp
     SvgIconComponent,
     SectionTitleComponent,
     SubtitleComponent,
+    ContactFormComponent,
   ],
-  imports: [
-    CommonModule,
-  ],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+    ],
   exports: [
     HeroWordComponent,
     SvgIconComponent,
     SectionTitleComponent,
     SubtitleComponent,
+    ContactFormComponent,
   ]
 })
 export class SharedModule {

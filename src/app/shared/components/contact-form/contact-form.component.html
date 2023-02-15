@@ -1,0 +1,17 @@
+<form class="form__body" [formGroup]="contacts" autocomplete="off" (ngSubmit)="submit()">
+  <label class="form__label" for="name">{{fields.name}}<sup class="special__mark">*</sup>
+    <span class="form__tip" *ngIf="contacts.controls?.['name']?.errors?.['minlength']">{{warnings.minLength}}</span>
+  </label>
+  <input class="form__item" type="text" id="name" formControlName="name" aria-required="true">
+  <label class="form__label" for="email">{{fields.email}}<sup class="special__mark">*</sup>
+    <span class="form__tip" *ngIf="contacts.controls?.['email']?.errors?.['email']">{{warnings.email}}</span>
+  </label>
+  <input class="form__item" type="email" id="email" formControlName="email" aria-required="true">
+  <label class="form__label" for="message">{{fields.message}}<sup class="special__mark">*</sup>
+    <span class="form__tip" *ngIf="contacts.controls?.['message']?.errors?.['minlength']">{{warnings.minLength}}</span>
+    <span class="form__tip" *ngIf="contacts.controls?.['message']?.errors?.['maxlength']">{{warnings.maxLength}}</span>
+  </label>
+  <textarea class="form__item form__text" id="message" formControlName="message" rows="5"
+            aria-required="true"></textarea>
+  <button class="form__btn" type="submit" [disabled]="!contacts.valid">{{fields.submit}}</button>
+</form>
