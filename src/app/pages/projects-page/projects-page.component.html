@@ -5,8 +5,7 @@
     <div class="actual__inner">
       <div class="project__card" *ngFor="let project of actualProjects">
         <app-subtitle [title]="project.name" type="h4"></app-subtitle>
-        <!--        todo add gallery component-->
-        <div class="project__gallery"></div>
+        <app-gallery [imgList]="project.gallery"></app-gallery>
         <div class="project__technologies">
           <app-svg-icon *ngFor="let icon of project.skills" [path]="svgIconSrc" [id]="icon"></app-svg-icon>
         </div>
