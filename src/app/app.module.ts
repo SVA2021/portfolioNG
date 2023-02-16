@@ -10,6 +10,7 @@ import {NgOptimizedImage} from "@angular/common";
 import { ContactPageComponent } from './pages/contact-page/contact-page.component';
 import {HttpClientModule} from "@angular/common/http";
 import { CertificatesPageComponent } from './pages/certificates-page/certificates-page.component';
+import { ProjectsPageComponent } from './pages/projects-page/projects-page.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CertificatesPageComponent } from './pages/certificates-page/certificate
     AboutPageComponent,
     ContactPageComponent,
     CertificatesPageComponent,
+    ProjectsPageComponent,
   ],
   imports: [
     BrowserModule,
