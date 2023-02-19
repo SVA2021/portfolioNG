@@ -1,0 +1,15 @@
+<div class="gallery" [ngClass]="{'showFull' : isFullScreenMode}">
+  <div class="gallery__navigation">
+    <button class="gallery__btn" (click)="showPrevSlide()">{{navButtons.prev}}</button>
+    <button class="gallery__btn" [ngClass]="{'gallery__btn--active' : isFullScreenMode}"
+            (click)="toggleFullScreenMode()">
+      {{navButtons.fullscreen}}
+    </button>
+    <button class="gallery__btn" [ngClass]="{'gallery__btn--active' : isSlideShowMode}" (click)="toggleSlideShowMode()">
+      {{navButtons.slideshow}}
+    </button>
+    <button class="gallery__btn" (click)="showNextSlide()">{{navButtons.next}}</button>
+  </div>
+<!--  todo add any img optimization-->
+  <img [src]="activeImgSrc" [alt]="imgAlt" class="gallery__img" (click)="toggleFullScreenMode()">
+</div>
