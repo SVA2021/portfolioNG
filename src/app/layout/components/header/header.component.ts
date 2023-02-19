@@ -12,6 +12,7 @@ import {Subscription} from "rxjs";
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
+  isMenuVisible: boolean
   nameArray: string []
   menuLinks: MenuItemI[]
   activeLang: langT
@@ -21,6 +22,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     public header: HeaderService,
     public lang: LangService,
   ) {
+    this.isMenuVisible = false;
     this.myLang$ = Subscription.EMPTY;
     this.activeLang = this.lang.lastLang;
     this.nameArray = this.header.logo[this.activeLang].split('') ?? [];
@@ -41,6 +43,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.myLang$.unsubscribe();
+  }
+
+  toggleModalMenu() {
+    this.isMenuVisible = !this.isMenuVisible;
   }
 
 }

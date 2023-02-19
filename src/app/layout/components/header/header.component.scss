@@ -64,6 +64,17 @@
   }
 }
 
+.menu__modal {
+  display: block;
+  position: fixed;
+  top: 4rem;
+  height: calc(100vh - 4rem);
+  left: 0;
+  right: 0;
+  z-index: $z-index-modal;
+  background-color: $orange;
+}
+
 .menu__body {
   display: flex;
   flex-direction: column;
@@ -146,6 +157,7 @@
   border-radius: $border-radius-default;
   top: 50%;
   right: 1rem;
+  background-color: transparent;
   transform: translateY(-50%);
   z-index: $z-index-navigation;
   cursor: pointer;
@@ -155,9 +167,9 @@
   }
 }
 
-.menu__btn--svg {
+.menu__btn__svg {
+  display: inline-block;
   padding: $offset-basic;
-
   width: 3rem;
   height: 3rem;
   fill: $light;
