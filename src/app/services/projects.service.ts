@@ -135,8 +135,15 @@ export class ProjectsService {
             'Git', 'GitHub', 'Vercel(deploy)',],
           additional: `Some features that i want to implement was not realized by BackEnd limitations.
           UI/ UX designed by me.`,
-          gallery: [],
-          skills: ['html5', 'git', 'markdown', 'github', 'typescript', 'react', 'redux',],
+          gallery: [
+            'https://ik.imagekit.io/sva/projects/moviefinder/moviefinder_0.png',
+            'https://ik.imagekit.io/sva/projects/moviefinder/moviefinder_1.png',
+            'https://ik.imagekit.io/sva/projects/moviefinder/moviefinder_0_720.png',
+            'https://ik.imagekit.io/sva/projects/moviefinder/moviefinder_1_720.png',
+            'https://ik.imagekit.io/sva/projects/moviefinder/moviefinder_0_360.png',
+            'https://ik.imagekit.io/sva/projects/moviefinder/moviefinder_1_360.png',
+          ],
+          skills: ['html5', 'git', 'markdown', 'typescript', 'react', 'redux',],
           links: [
             {
               href: 'https://github.com/SVA2021/movie_finder',
@@ -166,8 +173,15 @@ export class ProjectsService {
             'Git', 'GitHub', 'Vercel(deploy)',],
           additional: `Не все исходные возможности были реализованы, частично из-за ограничений BackEnd.
           Дизайн UX/ UI разработан мной.`,
-          gallery: [],
-          skills: ['html5', 'git', 'markdown', 'github', 'typescript', 'react', 'redux',],
+          gallery: [
+            'https://ik.imagekit.io/sva/projects/moviefinder/moviefinder_0.png',
+            'https://ik.imagekit.io/sva/projects/moviefinder/moviefinder_1.png',
+            'https://ik.imagekit.io/sva/projects/moviefinder/moviefinder_0_720.png',
+            'https://ik.imagekit.io/sva/projects/moviefinder/moviefinder_1_720.png',
+            'https://ik.imagekit.io/sva/projects/moviefinder/moviefinder_0_360.png',
+            'https://ik.imagekit.io/sva/projects/moviefinder/moviefinder_1_360.png',
+          ],
+          skills: ['html5', 'git', 'markdown', 'typescript', 'react', 'redux',],
           links: [
             {
               href: 'https://github.com/SVA2021/movie_finder',

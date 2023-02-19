@@ -1,11 +1,11 @@
 <section class="projects">
   <app-section-title [title]="pageTitles.title"></app-section-title>
+  <app-subtitle [title]="pageTitles.actual"></app-subtitle>
   <div class="actual">
-    <app-subtitle [title]="pageTitles.actual"></app-subtitle>
     <div class="actual__inner">
       <div class="project__card" *ngFor="let project of actualProjects">
-        <app-subtitle [title]="project.name" type="h4"></app-subtitle>
-        <app-gallery [imgList]="project.gallery"></app-gallery>
+        <app-subtitle [title]="project.name" type="h4" class="project__title"></app-subtitle>
+        <app-gallery [imgList]="project.gallery" class="project__gallery"></app-gallery>
         <div class="project__technologies">
           <app-svg-icon *ngFor="let icon of project.skills" [path]="svgIconSrc" [id]="icon"></app-svg-icon>
         </div>

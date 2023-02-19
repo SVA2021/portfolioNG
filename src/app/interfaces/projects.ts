@@ -29,16 +29,22 @@ export type actualProjectsLangT = {
   [key in langT]: actualProjectT[]
 }
 
-export  type futureProjectT = {
+export type baseProjectT = {
   name: string
   description: string
   why: string
   technologies: string[]
+}
+
+export  type futureProjectT = baseProjectT & {
   newSkills: string[]
 }
 
-export  type actualProjectT = Omit<futureProjectT, 'newSkills'> & {
+export  type actualProjectT = baseProjectT & projectFilesT & {
   additional: string
+}
+
+export  type projectFilesT = {
   gallery: string[]
   skills: string[]
   links: linkT[]
