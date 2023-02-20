@@ -27,8 +27,8 @@ export class HeaderService {
       ru: 'сва',
     };
     this._cvLink = {
-      en: 'https://drive.google.com/file/d/1a14g9IZpSjA9U7FNQoCyCOvh9lXYIZG3/view?usp=share_link',
-      ru: 'https://drive.google.com/file/d/1RkNFo8uZNtudeQkN1aJgxPAnHhmauUKb/view?usp=share_link',
+      en: 'https://drive.google.com/file/d/1LHP8qMPYOtQ21eMHMvIQ6eo_D0MVe0bO/view?usp=share_link',
+      ru: 'https://drive.google.com/file/d/1I0a6w9ELKe91yVhRST3GyD6RxkQecfoU/view?usp=share_link',
     }
     this._menuLinks = {
       en: [
