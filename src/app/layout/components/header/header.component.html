@@ -7,13 +7,12 @@
       <li class="menu__item" *ngFor="let menuItem of menuLinks">
         <a [routerLink]="menuItem.href" class="menu__link">{{menuItem.title}}</a>
       </li>
-      <!--      todo add download link for cv-->
       <li class="menu__item">
         <button class="menu__link" (click)="toggleLang()">{{activeLang | titlecase}}</button>
       </li>
-      <!--      <li class="menu__item cv">-->
-      <!--        <a href="./Sofronov_Vitaliy_FrontEnd_Developer_170123.pdf" class="menu__link" download>my CV</a>-->
-      <!--      </li>-->
+      <li class="menu__item cv">
+        <a [href]="cvLink" class="menu__link" download target="_blank" rel="noopener noreferref">CV</a>
+      </li>
     </ul>
   </nav>
   <button class="menu__btn" aria-expanded="false" aria-label="expand navigation menu" (click)="toggleModalMenu()">
