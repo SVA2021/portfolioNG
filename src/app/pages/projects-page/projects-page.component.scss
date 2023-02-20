@@ -54,6 +54,10 @@
 .project__technologies {
   grid-area: techno;
   margin: 2vw auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 
   @include media-lg {
     margin: 0 auto;
