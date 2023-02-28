@@ -1,0 +1,19 @@
+<section class="login">
+  <app-section-title [title]="text.title"></app-section-title>
+  <div class="login__wrapper">
+    <ng-container *ngIf="isLogged; else showLogin">
+      <p class="login__welcome">{{text.welcome}}, {{userName}}!</p>
+      <ng-container *ngIf="isAdmin">
+        <p>{{text.admin}}</p>
+        <button class="login__btn" (click)="goToAdminPanel()">{{buttons.goto}}</button>
+      </ng-container>
+      <p *ngIf="!isAdmin">{{text.guest}}</p>
+      <button class="login__btn" (click)="logout()">{{buttons.logout}}</button>
+    </ng-container>
+    <ng-template #showLogin>
+      <p class="login__description">{{text.description}}</p>
+      <p class="login__welcome">{{text.login}}</p>
+      <button class="login__btn" (click)="login()">{{buttons.login}}</button>
+    </ng-template>
+  </div>
+</section>

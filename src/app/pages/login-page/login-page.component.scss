@@ -1,0 +1,52 @@
+@import 'variables';
+@import 'mixins';
+
+.login {
+  margin: 0 auto;
+}
+
+.login__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login__btn {
+
+  @include borderDefault;
+  margin: $offset-basic *4 auto;
+  padding: $offset-basic *2;
+  transition: all 0.3s ease-in-out;
+  color: $light;
+  background-color: transparent;
+  font: 700 $font-size-subtitle $font-titles;
+  text-transform: uppercase;
+
+  &:hover {
+    color: $dark;
+    background-color: $orange;
+    box-shadow: 2px 2px 10px $green, -2px -2px 10px $green;
+  }
+
+  &:focus {
+    box-shadow: 2px 2px 10px $light, -2px -2px 10px $light;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+.login__description {
+  margin: $offset-basic *2 auto;
+  padding: $offset-basic *2;
+  //color: $orange;
+  font: 700 $font-size-subtitle $font-titles;
+}
+
+.login__welcome {
+  margin: $offset-basic *4 auto;
+  padding: $offset-basic *2;
+  color: $orange;
+  font: 700 $font-size-text $font-titles;
+}
