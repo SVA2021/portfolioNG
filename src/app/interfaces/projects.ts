@@ -1,4 +1,4 @@
-import {langT} from "../layout/interfaces/lang";
+import {baseLangT, langT} from "../layout/interfaces/lang";
 
 export type  pageTitlesT = {
   title: string
@@ -21,30 +21,20 @@ export type projectLangTitlesT = {
   [key in langT]: projectTitlesT
 }
 
-export type futureProjectsLangT = {
-  [key in langT]: futureProjectT[]
-}
-
-export type actualProjectsLangT = {
-  [key in langT]: actualProjectT[]
-}
-
 export type baseProjectT = {
+  id?: number | string
   name: string
-  description: string
-  why: string
-  technologies: string[]
+  technologies: string
+  why: baseLangT
+  description: baseLangT
 }
 
 export  type futureProjectT = baseProjectT & {
-  newSkills: string[]
+  newSkills: string
 }
 
-export  type actualProjectT = baseProjectT & projectFilesT & {
-  additional: string
-}
-
-export  type projectFilesT = {
+export  type actualProjectT = baseProjectT & {
+  additional: baseLangT
   gallery: string[]
   skills: string[]
   links: linkT[]
@@ -52,5 +42,5 @@ export  type projectFilesT = {
 
 export type linkT = {
   href: string
-  title: string
+  title: baseLangT
 }

@@ -25,8 +25,8 @@ export class ProjectsPageComponent implements OnInit, OnDestroy {
     this.myLang$ = Subscription.EMPTY;
     this.pageTitles = this.projects.pageTitles[this.lang.lastLang];
     this.projectTitles = this.projects.projectTitles[this.lang.lastLang];
-    this.futureProjects = this.projects.futureProjects[this.lang.lastLang];
-    this.actualProjects = this.projects.actualProjects[this.lang.lastLang];
+    this.futureProjects = this.projects.futureProjects;
+    this.actualProjects = this.projects.actualProjects;
     this.svgIconSrc = this.projects.svgIconSrc;
   }
 
@@ -34,8 +34,6 @@ export class ProjectsPageComponent implements OnInit, OnDestroy {
     this.myLang$ = this.lang.activeLang$.subscribe(lang => {
         this.pageTitles = this.projects.pageTitles[lang];
         this.projectTitles = this.projects.projectTitles[lang];
-        this.futureProjects = this.projects.futureProjects[lang];
-        this.actualProjects = this.projects.actualProjects[lang];
       }
     )
   }
