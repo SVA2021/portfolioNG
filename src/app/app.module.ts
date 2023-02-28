@@ -11,6 +11,10 @@ import { ContactPageComponent } from './pages/contact-page/contact-page.componen
 import {HttpClientModule} from "@angular/common/http";
 import { CertificatesPageComponent } from './pages/certificates-page/certificates-page.component';
 import { ProjectsPageComponent } from './pages/projects-page/projects-page.component';
+import { AdminPageComponent } from './pages/admin-page/admin-page.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import {environment} from "../environments/environment";
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +24,8 @@ import { ProjectsPageComponent } from './pages/projects-page/projects-page.compo
     ContactPageComponent,
     CertificatesPageComponent,
     ProjectsPageComponent,
+    AdminPageComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +34,7 @@ import { ProjectsPageComponent } from './pages/projects-page/projects-page.compo
     SharedModule,
     NgOptimizedImage,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
   ],
   providers: [],
   bootstrap: [AppComponent]
