@@ -4,6 +4,7 @@ import {HeaderService} from "../../services/header.service";
 import {langT} from "../../interfaces/lang";
 import {LangService} from "../../services/lang.service";
 import {Subscription} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -22,6 +23,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(
     public header: HeaderService,
     public lang: LangService,
+    public router: Router,
   ) {
     this.isMenuVisible = false;
     this.myLang$ = Subscription.EMPTY;
@@ -50,6 +52,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   toggleModalMenu() {
     this.isMenuVisible = !this.isMenuVisible;
+  }
+
+  goToLogin() {
+    this.router.navigate(['login']);
   }
 
 }
