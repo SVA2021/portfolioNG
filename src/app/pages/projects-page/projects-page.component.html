@@ -3,24 +3,7 @@
   <app-subtitle [title]="pageTitles.actual"></app-subtitle>
   <div class="actual">
     <div class="actual__inner">
-      <div class="project__card" *ngFor="let project of actualProjects">
-        <app-subtitle [title]="project.name" type="h4" class="project__title"></app-subtitle>
-        <app-gallery [imgList]="project.gallery" class="project__gallery"></app-gallery>
-        <div class="project__technologies">
-          <app-svg-icon *ngFor="let icon of project.skills" [path]="svgIconSrc" [id]="icon"></app-svg-icon>
-        </div>
-        <div class="project__description">
-          <p><span class="project__name">{{project.name}}</span>{{project.description[lang.lastLang]}}</p>
-          <p><span class="project__special">{{projectTitles.why}}</span>{{project.why[lang.lastLang]}}</p>
-          <p><span class="project__special">{{projectTitles.technologies}}</span>{{project.technologies}}</p>
-          <p><span class="project__special">{{projectTitles.additional}}</span>{{project.additional[lang.lastLang]}}</p>
-        </div>
-        <div class="project__links">
-          <a *ngFor="let link of project.links" [href]="link.href" class="project__link" target="_blank">
-            {{link.title[lang.lastLang]}}
-          </a>
-        </div>
-      </div>
+      <app-actual-project-card *ngFor="let project of actualProjects" [project]="project"></app-actual-project-card>
     </div>
   </div>
   <div class="future">
