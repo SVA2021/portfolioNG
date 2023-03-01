@@ -13,7 +13,7 @@ export class FutureProjectComponent implements OnInit, OnDestroy {
 
   myLang$: Subscription
   projectTitles: projectTitlesT
-  @Input() project: futureProjectT | undefined
+  @Input() project!: futureProjectT
 
   constructor(
     public lang: LangService,
