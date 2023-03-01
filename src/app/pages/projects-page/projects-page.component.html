@@ -26,15 +26,8 @@
   <div class="future">
     <app-subtitle [title]="pageTitles.future"></app-subtitle>
     <div class="future__inner">
-      <div class="future__card" *ngFor="let project of futureProjects">
-        <app-subtitle [title]="project.name" type="h4"></app-subtitle>
-        <div class="project__description">
-          <p><span class="project__name">{{project.name}}</span>{{project.description[lang.lastLang]}}</p>
-          <p><span class="project__special">{{projectTitles.why}}</span> {{project.why[lang.lastLang]}} </p>
-          <p><span class="project__special">{{projectTitles.technologies}}</span>{{project.technologies}}</p>
-          <p><span class="project__special">{{projectTitles.newSkills}}</span>{{project.newSkills}}</p>
-        </div>
-      </div>
+      <app-future-project class="future__card" *ngFor="let project of futureProjects" [project]="project">
+      </app-future-project>
     </div>
   </div>
 </section>
