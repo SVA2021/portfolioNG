@@ -1,0 +1,44 @@
+<form class="form__body" [formGroup]="future" autocomplete="off" (ngSubmit)="submit()">
+
+  <label class="form__label" for="name">name<sup class="special__mark">*</sup>
+    <span class="form__tip" *ngIf="future.controls?.['name']?.errors?.['minlength']">min length 3 chars</span>
+  </label>
+  <input class="form__item" type="text" id="name" formControlName="name" aria-required="true">
+
+  <label class="form__label" for="descriptionEn">description (Eng)<sup class="special__mark">*</sup>
+    <span class="form__tip"
+          *ngIf="future.controls?.['descriptionEn']?.errors?.['minlength']">min length 3 chars</span>
+  </label>
+  <textarea class="form__item" id="descriptionEn" formControlName="descriptionEn" rows="5"
+            aria-required="true"></textarea>
+
+  <label class="form__label" for="descriptionRu">описание (РУС)<sup class="special__mark">*</sup>
+    <span class="form__tip"
+          *ngIf="future.controls?.['descriptionRu']?.errors?.['minlength']">минимум 3 символа</span>
+  </label>
+  <textarea class="form__item" id="descriptionRu" formControlName="descriptionRu" rows="5"
+            aria-required="true"></textarea>
+
+  <label class="form__label" for="whyEn">why (Eng)<sup class="special__mark">*</sup>
+    <span class="form__tip" *ngIf="future.controls?.['whyEn']?.errors?.['minlength']">min length 3 chars</span>
+  </label>
+  <textarea class="form__item" id="whyEn" formControlName="whyEn" rows="5" aria-required="true"></textarea>
+
+  <label class="form__label" for="whyRu">почему (РУС)<sup class="special__mark">*</sup>
+    <span class="form__tip" *ngIf="future.controls?.['whyRu']?.errors?.['minlength']">минимум 3 символа</span>
+  </label>
+  <textarea class="form__item" id="whyRu" formControlName="whyRu" rows="5" aria-required="true"></textarea>
+
+  <label class="form__label" for="technologies">technologies (Eng)<sup class="special__mark">*</sup>
+    <span class="form__tip" *ngIf="future.controls?.['technologies']?.errors?.['minlength']">min length 3 chars</span>
+  </label>
+  <textarea class="form__item" id="technologies" formControlName="technologies" rows="5"
+            aria-required="true"></textarea>
+
+  <label class="form__label" for="newSkills">newSkills (Eng)<sup class="special__mark">*</sup>
+    <span class="form__tip" *ngIf="future.controls?.['newSkills']?.errors?.['minlength']">min length 3 chars</span>
+  </label>
+  <textarea class="form__item" id="newSkills" formControlName="newSkills" rows="5" aria-required="true"></textarea>
+
+  <button class="form__btn" type="submit" [disabled]="!future.valid">submit</button>
+</form>
