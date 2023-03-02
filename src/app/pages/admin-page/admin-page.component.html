@@ -1,0 +1,40 @@
+<section class="admin">
+  <app-section-title title="admin"></app-section-title>
+  <div>
+    <app-subtitle title="choose type of project" type="h4"></app-subtitle>
+    <div class="admin__nav">
+      <button class="admin__btn" (click)="setProjectMode('future')"
+              [ngClass]="{'admin__btn__active' : projectMode === 'future'}">
+        future
+      </button>
+      <button class="admin__btn" (click)="setProjectMode('actual')"
+              [ngClass]="{'admin__btn__active' : projectMode === 'actual'}">
+        actual
+      </button>
+    </div>
+    <div class="admin__nav" *ngIf="projectMode">
+      <button class="admin__btn" (click)="setEditMode('old')" [ngClass]="{'admin__btn__active' : editMode === 'old'}">
+        edit existing
+      </button>
+      <button class="admin__btn" (click)="setEditMode('new')" [ngClass]="{'admin__btn__active' : editMode === 'new'}">
+        add new
+      </button>
+    </div>
+  </div>
+
+  <div class="admin__future" *ngIf="projectMode === 'future'">
+    <app-subtitle title="future project" type="h4"></app-subtitle>
+    <app-future-project-form *ngIf="editMode" (futureProjectTEventEmitter)="setEditedFutureProject($event)"
+                             class="future__form">
+    </app-future-project-form>
+    <app-future-project [project]="editedFutureProject" *ngIf="editedFutureProject"></app-future-project>
+  </div>
+
+  <div class="admin__actual" *ngIf="projectMode === 'actual'">
+    <app-subtitle title="actual project" type="h4"></app-subtitle>
+    <app-actual-project-form *ngIf="editMode" (actualProject)="setEditedActualProject($event)" class="actual__form">
+    </app-actual-project-form>
+    <app-actual-project-card [project]="editedActualProject" *ngIf="editedActualProject"></app-actual-project-card>
+  </div>
+
+</section>

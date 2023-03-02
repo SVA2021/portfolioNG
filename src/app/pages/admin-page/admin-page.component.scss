@@ -1,0 +1,49 @@
+@import 'variables';
+@import 'mixins';
+
+.admin {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.admin__nav {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  max-width: 700px;
+}
+
+.admin__btn {
+  @include borderDefault;
+  margin: $offset-basic *4 auto;
+  padding: $offset-basic *2;
+  transition: all 0.3s ease-in-out;
+  color: $dark;
+  background-color: $green;
+  font: 700 $font-size-subtitle $font-titles;
+  text-transform: capitalize;
+
+  &:hover {
+    color: $light;
+    background-color: $orange;
+    box-shadow: 2px 2px 10px $green, -2px -2px 10px $green;
+  }
+
+  &:focus {
+    box-shadow: 2px 2px 10px $light, -2px -2px 10px $light;
+  }
+}
+
+.admin__btn__active {
+  background-color: $orange;
+}
+
+.future__wrapper {
+  display: flex;
+}
+
+.future__form {
+  min-width: 60%;
+}
