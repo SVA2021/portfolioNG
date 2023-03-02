@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {futureProjectT} from "../../../interfaces/projects";
 
@@ -11,7 +11,7 @@ export class FutureProjectFormComponent implements OnInit, OnDestroy {
 
   future: FormGroup
   @Input() initialProject: futureProjectT | undefined | null
-  @Input() submitHandler!: (project: futureProjectT) => void
+  @Output() futureProjectTEventEmitter = new EventEmitter<futureProjectT>();
 
   constructor() {
     this.future = new FormGroup({
@@ -46,8 +46,8 @@ export class FutureProjectFormComponent implements OnInit, OnDestroy {
       newSkills: this.future.value.newSkills,
     }
 
-    this.submitHandler(newFutureProject);
-    // this.future.reset();
+    this.futureProjectTEventEmitter.emit(newFutureProject);
+    this.future.reset();
   }
 
   ngOnDestroy(): void {
