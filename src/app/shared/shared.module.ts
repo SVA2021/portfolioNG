@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {
-  ActualProjectCardComponent,
+  ActualProjectCardComponent, ActualProjectFormComponent,
   ContactFormComponent, FutureProjectComponent, FutureProjectFormComponent, GalleryComponent,
   HeroWordComponent,
   SectionTitleComponent,
@@ -22,6 +22,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     FutureProjectFormComponent,
     FutureProjectComponent,
     ActualProjectCardComponent,
+    ActualProjectFormComponent,
   ],
   imports: [
     CommonModule,
@@ -38,6 +39,8 @@ import {ReactiveFormsModule} from "@angular/forms";
     FutureProjectFormComponent,
     FutureProjectComponent,
     ActualProjectCardComponent,
+    ActualProjectFormComponent,
+
   ]
 })
 export class SharedModule {
