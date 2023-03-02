@@ -70,5 +70,33 @@
     </div>
   </div>
 
+  <div class="links" formGroupName="linkItem" >
+    <label class="form__label special__mark">add links</label>
+    <div class="links__body">
+      <div class="links__inputs">
+        <label class="form__label" for="href">link href<sup class="special__mark">*</sup></label>
+        <input class="form__item form__input" type="text" id="href" formControlName="href"
+               aria-required="true">
+        <label class="form__label" for="titleEn">link title (Eng)<sup class="special__mark">*</sup></label>
+        <input class="form__item form__input" type="text" id="titleEn" formControlName="titleEn"
+               aria-required="true">
+        <label class="form__label" for="titleRu">название ссылки (РУС)<sup class="special__mark">*</sup></label>
+        <input class="form__item form__input" type="text" id="titleRu" formControlName="titleRu"
+               aria-required="true">
+      </div>
+      <button class="form__btn form__btn__small" (click)="addLinkItem()">+</button>
+    </div>
+    <div class="links__preview"  *ngIf="links.length">
+      <label class="form__label special__mark">links items preview list</label>
+      <div *ngFor="let item of links;index as i;" class="link__item">
+        <p class="gallery__item">
+          <a [href]="item.href" class="project__link" target="_blank"> {{item.title.en}}</a>
+          <a [href]="item.href" class="project__link" target="_blank"> {{item.title.ru}}</a>
+        </p>
+        <button class="form__btn form__btn__small" (click)="delLinkItem(i)">-</button>
+      </div>
+    </div>
+  </div>
+
   <button class="form__btn" type="submit" [disabled]="!actual.valid">show preview</button>
 </form>

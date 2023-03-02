@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {actualProjectT,} from "../../../interfaces/projects";
+import {actualProjectT, linkT,} from "../../../interfaces/projects";
 import {webSkill} from "../../../interfaces/admin";
 import {AdminService} from "../../../services/admin.service";
 import {ProjectsService} from "../../../services/projects.service";
@@ -19,6 +19,7 @@ export class ActualProjectFormComponent implements OnInit, OnDestroy {
   skills: webSkill[]
   skillsFull: webSkill[]
   svgIconSrc: string
+  links: linkT[]
 
   constructor(
     admin: AdminService,
@@ -34,12 +35,18 @@ export class ActualProjectFormComponent implements OnInit, OnDestroy {
         additionalEn: new FormControl(this.initialProject?.additional.en ?? '', [Validators.required, Validators.minLength(3),]),
         additionalRu: new FormControl(this.initialProject?.additional.ru ?? '', [Validators.required, Validators.minLength(3),]),
         galleryItem: new FormControl(''),
+        linkItem: new FormGroup({
+          href: new FormControl('',),
+          titleEn: new FormControl('',),
+          titleRu: new FormControl('',),
+        }),
       }
     );
     this.gallery = this.initialProject?.gallery ?? [];
     this.skills = this.initialProject?.skills ?? [];
     this.skillsFull = admin.webSkillsFull;
     this.svgIconSrc = this.projects.svgIconSrc;
+    this.links = this.initialProject?.links ?? [];
   }
 
   ngOnInit(): void {
@@ -90,7 +97,23 @@ export class ActualProjectFormComponent implements OnInit, OnDestroy {
     this.skills.includes(skill)
       ? this.skills = this.skills.filter(item => item !== skill)
       : this.skills.push(skill);
-    console.log(skill)
+  }
+
+  addLinkItem() {
+    let href = this.actual.value.linkItem.href.trim();
+    let titleEn = this.actual.value.linkItem.titleEn.trim();
+    let titleRu = this.actual.value.linkItem.titleRu.trim();
+    if (!href || !titleEn || !titleRu) return;
+    let newLink: linkT = {
+      href: href,
+      title: {en: titleEn, ru: titleRu,},
+    };
+    this.links.push(newLink);
+    this.actual.patchValue({linkItem: {href: '', titleEn: '', titleRu: ''}});
+  }
+
+  delLinkItem(delIndex: number) {
+    this.links = this.links.filter((item, index) => index !== delIndex);
   }
 
 }
