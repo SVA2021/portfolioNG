@@ -1,4 +1,5 @@
 import {baseLangT, langT} from "../layout/interfaces/lang";
+import {webSkill} from "./admin";
 
 export type  pageTitlesT = {
   title: string
@@ -36,7 +37,7 @@ export  type futureProjectT = baseProjectT & {
 export  type actualProjectT = baseProjectT & {
   additional: baseLangT
   gallery: string[]
-  skills: string[]
+  skills: webSkill[]
   links: linkT[]
 }
 
