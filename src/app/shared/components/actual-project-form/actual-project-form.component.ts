@@ -1,6 +1,9 @@
 import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {actualProjectT,} from "../../../interfaces/projects";
+import {webSkill} from "../../../interfaces/admin";
+import {AdminService} from "../../../services/admin.service";
+import {ProjectsService} from "../../../services/projects.service";
 
 @Component({
   selector: 'app-actual-project-form',
@@ -13,8 +16,14 @@ export class ActualProjectFormComponent implements OnInit, OnDestroy {
   @Output() actualProject = new EventEmitter<actualProjectT>();
   actual: FormGroup
   gallery: string[]
+  skills: webSkill[]
+  skillsFull: webSkill[]
+  svgIconSrc: string
 
-  constructor() {
+  constructor(
+    admin: AdminService,
+    public projects: ProjectsService,
+  ) {
     this.actual = new FormGroup({
         name: new FormControl(this.initialProject?.name ?? '', [Validators.required, Validators.minLength(3)]),
         descriptionEn: new FormControl(this.initialProject?.description.en ?? '', [Validators.required, Validators.minLength(3),]),
@@ -28,6 +37,9 @@ export class ActualProjectFormComponent implements OnInit, OnDestroy {
       }
     );
     this.gallery = this.initialProject?.gallery ?? [];
+    this.skills = this.initialProject?.skills ?? [];
+    this.skillsFull = admin.webSkillsFull;
+    this.svgIconSrc = this.projects.svgIconSrc;
   }
 
   ngOnInit(): void {
@@ -56,8 +68,8 @@ export class ActualProjectFormComponent implements OnInit, OnDestroy {
         ru: this.actual.value.additionalRu,
       },
       gallery: this.gallery,
+      skills: this.skills,
       links: [],
-      skills: [],
     }
 
     this.actualProject.emit(newProject);
@@ -72,6 +84,13 @@ export class ActualProjectFormComponent implements OnInit, OnDestroy {
 
   delGalleryItem(delIndex: number) {
     this.gallery = this.gallery.filter((item, index) => index !== delIndex);
+  }
+
+  toggleSkill(skill: webSkill) {
+    this.skills.includes(skill)
+      ? this.skills = this.skills.filter(item => item !== skill)
+      : this.skills.push(skill);
+    console.log(skill)
   }
 
 }

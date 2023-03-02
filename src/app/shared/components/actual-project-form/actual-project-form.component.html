@@ -54,10 +54,19 @@
     </div>
     <div class="gallery__body" *ngIf="gallery.length">
       <label class="form__label special__mark">gallery items list</label>
-      <div *ngFor="let item of gallery;index as i;" class="gallery__input" >
+      <div *ngFor="let item of gallery;index as i;" class="gallery__input">
         <p class="gallery__item">{{item}}</p>
         <button class="form__btn form__btn__small" (click)="delGalleryItem(i)">-</button>
       </div>
+    </div>
+  </div>
+
+  <div class="skills">
+    <label class="form__label">check needed skills below</label>
+    <div class="skills__body">
+      <app-svg-icon *ngFor="let skill of skillsFull" [id]="skill" [path]="svgIconSrc"
+                    class="skills__item" [ngClass]="{checked : skills.includes(skill)}" (click)="toggleSkill(skill)">
+      </app-svg-icon>
     </div>
   </div>
 

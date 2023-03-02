@@ -120,3 +120,24 @@
 .special__mark {
   color: $orange;
 }
+
+.skills {
+  margin: $offset-basic *4;
+}
+
+.skills__body{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.skills__item {
+  margin: $offset-basic *4;
+  padding: $offset-basic *2;
+  cursor: pointer;
+  border-radius: $border-radius-section;
+}
+
+.checked {
+  box-shadow: 2px 2px 10px $orange, -2px -2px 10px $orange;
+}
