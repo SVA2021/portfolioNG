@@ -22,19 +22,49 @@
     </div>
   </div>
 
-  <div class="admin__future" *ngIf="projectMode === 'future'">
+  <div class="admin__future" *ngIf="projectMode === 'future' && editMode">
     <app-subtitle title="future project" type="h4"></app-subtitle>
-    <app-future-project-form *ngIf="editMode" (futureProjectTEventEmitter)="setEditedFutureProject($event)"
-                             class="future__form">
+    <div class="admin__projects project" *ngIf="futureProjects.length && editMode === 'old'">
+      <h5 class="project__title">future projects list</h5>
+      <div *ngFor="let project of futureProjects;index as i;" class="project__body">
+        <p class="project__item" [ngClass]="{'project__item--active': editedFutureProject?.id === project.id}"
+           (click)="setEditedFutureProject(project)">
+          {{project.id}}
+        </p>
+        <button class="project__btn" (click)="delFutureProjectItem(project.id)">-</button>
+      </div>
+    </div>
+    <app-future-project-form *ngIf="editMode === 'new' || (editMode === 'old' && editedFutureProject)"
+                             [initialProject]="editedFutureProject"
+                             (futureProjectTEventEmitter)="setEditedFutureProject($event)" class="future__form">
     </app-future-project-form>
     <app-future-project [project]="editedFutureProject" *ngIf="editedFutureProject"></app-future-project>
+
+    <button *ngIf="editedFutureProject" class="admin__btn" (click)="addNewFutureProject()">
+      add new future project to firebase
+    </button>
   </div>
 
-  <div class="admin__actual" *ngIf="projectMode === 'actual'">
+  <div class="admin__actual" *ngIf="projectMode === 'actual' && editMode">
     <app-subtitle title="actual project" type="h4"></app-subtitle>
-    <app-actual-project-form *ngIf="editMode" (actualProject)="setEditedActualProject($event)" class="actual__form">
+    <div class="admin__projects project" *ngIf="actualProjects.length && editMode === 'old'">
+      <h5 class="project__title">actual projects list</h5>
+      <div *ngFor="let project of actualProjects;index as i;" class="project__body">
+        <p class="project__item" [ngClass]="{'project__item--active': editedActualProject?.id === project.id}"
+           (click)="setEditedActualProject(project)">
+          {{project.id}}
+        </p>
+        <button class="project__btn" (click)="delActualProjectItem(project.id)">-</button>
+      </div>
+    </div>
+    <app-actual-project-form *ngIf="editMode" [initialProject]="editedActualProject"
+                             (actualProject)="setEditedActualProject($event)" class="actual__form">
     </app-actual-project-form>
     <app-actual-project-card [project]="editedActualProject" *ngIf="editedActualProject"></app-actual-project-card>
+
+    <button *ngIf="editedActualProject" class="admin__btn" (click)="addNewActualProject()">
+      add new actual project to firebase
+    </button>
   </div>
 
 </section>
