@@ -19,6 +19,8 @@ export class AdminPageComponent implements OnInit, OnDestroy {
   actualProjects: actualProjectT[]
   futureFbProjects$: Subscription
   futureProjects: futureProjectT[]
+  isActualProjectModalOpen: number | string | undefined
+  isFutureProjectModalOpen: number | string | undefined
 
   constructor(
     public fb: FirebaseService
@@ -30,6 +32,8 @@ export class AdminPageComponent implements OnInit, OnDestroy {
     this.futureFbProjects$ = Subscription.EMPTY;
     this.actualProjects = [];
     this.futureProjects = [];
+    this.isActualProjectModalOpen = undefined;
+    this.isFutureProjectModalOpen = undefined;
   }
 
   ngOnInit(): void {
@@ -57,29 +61,59 @@ export class AdminPageComponent implements OnInit, OnDestroy {
   }
 
   setEditedActualProject(project: actualProjectT) {
-    this.editedActualProject = project.id === this.editedActualProject?.id ? undefined : project;
+    this.editedActualProject = project;
   }
 
   setEditedFutureProject(project: futureProjectT) {
-    this.editedFutureProject = project.id === this.editedFutureProject?.id ? undefined : project;
+    this.editedFutureProject = project;
   }
 
-  addNewActualProject() {
-    if (!this.editedActualProject) return;
-    this.fb.addNewActualProject(this.editedActualProject);
+  handleActualProject() {
+    if (!this.editedActualProject || !this.editMode) return;
+    if (this.editMode === 'new') {
+      this.fb.addNewActualProject(this.editedActualProject)
+        .catch(e => console.log(e))
+        .finally(() => this.editedActualProject = undefined)
+    } else {
+      this.fb.updActualProject(this.editedActualProject)
+        .finally(() => this.editedActualProject = undefined)
+    }
   }
 
-  addNewFutureProject() {
-    if (!this.editedFutureProject) return;
-    this.fb.addNewFutureProject(this.editedFutureProject);
+  handleFutureProject() {
+    if (!this.editedFutureProject || !this.editMode) return;
+    if (this.editMode === 'new') {
+      this.fb.addNewFutureProject(this.editedFutureProject)
+        .catch(e => console.log(e))
+        .finally(() => this.editedFutureProject = undefined)
+    } else {
+      this.fb.updFutureProject(this.editedFutureProject)
+        .finally(() => this.editedFutureProject = undefined)
+    }
   }
 
-  delActualProjectItem(id: number| string | undefined) {
-    this.fb.delActualProject(id)
+  delActualProjectWithConfirm(action: 'yes' | 'no') {
+    if (action === 'yes') {
+      this.fb.delActualProject(this.isActualProjectModalOpen)
+        .catch(e => console.log(e))
+    }
+    this.isActualProjectModalOpen = undefined;
+  }
+
+  delFutureProjectWithConfirm(action: 'yes' | 'no') {
+    if (action === 'yes') {
+      this.fb.delFutureProject(this.isFutureProjectModalOpen)
+        .catch(e => console.log(e))
+    }
+    this.isFutureProjectModalOpen = undefined;
+  }
+
+  delActualProjectItem(id: number | string | undefined) {
+    this.isActualProjectModalOpen = id;
   }
 
   delFutureProjectItem(id: number | string | undefined) {
-    this.fb.delFutureProject(id);
+    this.isFutureProjectModalOpen = id;
   }
 
   ngOnDestroy(): void {
