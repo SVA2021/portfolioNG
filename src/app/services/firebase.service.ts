@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {Observable} from "rxjs";
 import {actualProjectT, futureProjectT} from "../interfaces/projects";
+import {projectMode} from "../interfaces/admin";
 
 @Injectable({
   providedIn: 'root'
@@ -18,20 +19,40 @@ export class FirebaseService {
     this.futureProjectsFb$ = this.store.collection('future').valueChanges({idField: 'id'}) as Observable<futureProjectT[]>;
   }
 
+  private addProject(projectMode: projectMode, project: actualProjectT | futureProjectT) {
+    return this.store.firestore.runTransaction(() => this.store.collection(projectMode).add(project))
+  }
+
+  private delProject(projectMode: projectMode, id: number | string | undefined) {
+    return this.store.firestore.runTransaction(() => this.store.collection(projectMode).doc(String(id)).delete())
+  }
+
+  private updProject(projectMode: projectMode, project: actualProjectT | futureProjectT) {
+    return this.store.firestore.runTransaction(() => this.store.collection(projectMode).doc(String(project.id)).update(project))
+  }
+
   addNewActualProject(project: actualProjectT) {
-    this.store.firestore.runTransaction(() => this.store.collection('actual').add(project))
+    return this.addProject('actual', project);
   }
 
   addNewFutureProject(project: futureProjectT) {
-    this.store.firestore.runTransaction(() => this.store.collection('future').add(project))
+    return this.addProject('future', project);
   }
 
   delActualProject(id: number | string | undefined) {
-    this.store.firestore.runTransaction(() => this.store.collection('actual').doc(String(id)).delete())
+    return this.delProject('actual', id);
   }
 
   delFutureProject(id: number | string | undefined) {
-    this.store.firestore.runTransaction(() => this.store.collection('future').doc(String(id)).delete())
+    return this.delProject('future', id);
+  }
+
+  updActualProject(project: actualProjectT) {
+    return this.updProject('actual', project);
+  }
+
+  updFutureProject(project: futureProjectT) {
+    return this.updProject('future', project);
   }
 
 
