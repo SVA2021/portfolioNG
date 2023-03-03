@@ -3,7 +3,7 @@ import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {
   ActualProjectCardComponent, ActualProjectFormComponent,
   ContactFormComponent, FutureProjectComponent, FutureProjectFormComponent, GalleryComponent,
-  HeroWordComponent,
+  HeroWordComponent, ModalConfirmComponent,
   SectionTitleComponent,
   SubtitleComponent,
   SvgIconComponent
@@ -23,6 +23,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     FutureProjectComponent,
     ActualProjectCardComponent,
     ActualProjectFormComponent,
+    ModalConfirmComponent,
   ],
   imports: [
     CommonModule,
@@ -40,6 +41,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     FutureProjectComponent,
     ActualProjectCardComponent,
     ActualProjectFormComponent,
+    ModalConfirmComponent,
 
   ]
 })

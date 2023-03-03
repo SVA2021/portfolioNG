@@ -8,3 +8,4 @@ export * from  './future-project-form/future-project-form.component';
 export * from  './future-project/future-project.component';
 export * from  './actual-project-card/actual-project-card.component';
 export * from './actual-project-form/actual-project-form.component';
+export * from './modal-confirm/modal-confirm.component';

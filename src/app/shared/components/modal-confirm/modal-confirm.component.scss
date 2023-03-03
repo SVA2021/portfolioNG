@@ -1,0 +1,50 @@
+@import 'variables';
+@import 'mixins';
+
+.modal{
+  z-index: $z-index-modal;
+  position: absolute;
+  inset: 0;
+  width: 99vw;
+  height: 99vh;
+  background-color: #000;
+  opacity: 0.9;
+}
+
+.modal__body {
+  @include borderDefault;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 300px;
+  max-width: 600px;
+  padding: $offset-basic * 4;
+  background-color: $dark;
+}
+
+.modal__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.modal__btn {
+  @include borderDefault;
+  margin: $offset-basic *4;
+  padding: $offset-basic *2;
+  transition: all 0.3s ease-in-out;
+  color: $dark;
+  font: 700 $font-size-subtitle $font-titles;
+  text-transform: uppercase;
+
+  &:hover {
+    color: $light;
+    background-color: $orange;
+    box-shadow: 2px 2px 10px $green, -2px -2px 10px $green;
+  }
+
+  &:focus {
+    box-shadow: 2px 2px 10px $light, -2px -2px 10px $light;
+  }
+}
