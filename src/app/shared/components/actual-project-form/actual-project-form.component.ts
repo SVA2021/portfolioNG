@@ -28,9 +28,9 @@ export class ActualProjectFormComponent implements OnInit, OnDestroy, OnChanges 
     this.actual = new FormGroup({});
     this.gallery = this.initialProject?.gallery ?? [];
     this.skills = this.initialProject?.skills ?? [];
+    this.links = this.initialProject?.links ?? [];
     this.skillsFull = admin.webSkillsFull;
     this.svgIconSrc = this.projects.svgIconSrc;
-    this.links = this.initialProject?.links ?? [];
   }
 
   ngOnInit(): void {
@@ -51,6 +51,9 @@ export class ActualProjectFormComponent implements OnInit, OnDestroy, OnChanges 
         }),
       }
     );
+    this.gallery = this.initialProject?.gallery ?? [];
+    this.skills = this.initialProject?.skills ?? [];
+    this.links = this.initialProject?.links ?? [];
   }
 
   ngOnDestroy(): void {
@@ -77,12 +80,12 @@ export class ActualProjectFormComponent implements OnInit, OnDestroy, OnChanges 
       },
       gallery: this.gallery,
       skills: this.skills,
-      links: [],
+      links: this.links,
     }
 
     this.actualProject.emit(newProject);
 
-    // this.future.reset();
+    this.actual.reset();
   }
 
   addGalleryItem() {
@@ -130,6 +133,9 @@ export class ActualProjectFormComponent implements OnInit, OnDestroy, OnChanges 
       galleryItem: '',
       linkItem: {href: '', titleEn: '', titleRu: ''},
     })
+    this.gallery = this.initialProject?.gallery ?? [];
+    this.skills = this.initialProject?.skills ?? [];
+    this.links = this.initialProject?.links ?? [];
   }
 
 }
