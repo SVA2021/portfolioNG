@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {futureProjectT} from "../../../interfaces/projects";
 
@@ -7,13 +7,17 @@ import {futureProjectT} from "../../../interfaces/projects";
   templateUrl: './future-project-form.component.html',
   styleUrls: ['./future-project-form.component.scss']
 })
-export class FutureProjectFormComponent implements OnInit, OnDestroy {
+export class FutureProjectFormComponent implements OnInit, OnDestroy, OnChanges {
 
   future: FormGroup
   @Input() initialProject: futureProjectT | undefined | null
   @Output() futureProjectTEventEmitter = new EventEmitter<futureProjectT>();
 
   constructor() {
+    this.future = new FormGroup([]);
+  }
+
+  ngOnInit(): void {
     this.future = new FormGroup({
         name: new FormControl(this.initialProject?.name ?? '', [Validators.required, Validators.minLength(3)]),
         descriptionEn: new FormControl(this.initialProject?.description.en ?? '', [Validators.required, Validators.minLength(3),]),
@@ -26,13 +30,11 @@ export class FutureProjectFormComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnInit(): void {
-  }
 
   submit() {
     if (this.future.invalid) return;
     let newFutureProject: futureProjectT = {
-      id: Date.now(),
+      id: this.initialProject?.id ?? Date.now(),
       name: this.future.value.name,
       description: {
         en: this.future.value.descriptionEn,
@@ -52,5 +54,17 @@ export class FutureProjectFormComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.future.reset();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.future.patchValue({
+      name: this.initialProject?.name ?? '',
+      descriptionEn: this.initialProject?.description.en ?? '',
+      descriptionRu: this.initialProject?.description.ru ?? '',
+      whyEn: this.initialProject?.why.en ?? '',
+      whyRu: this.initialProject?.why.ru ?? '',
+      technologies: this.initialProject?.technologies ?? '',
+      newSkills: this.initialProject?.newSkills ?? '',
+    })
   }
 }

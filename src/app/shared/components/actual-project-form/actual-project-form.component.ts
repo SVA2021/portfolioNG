@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {actualProjectT, linkT,} from "../../../interfaces/projects";
 import {webSkill} from "../../../interfaces/admin";
@@ -10,7 +10,7 @@ import {ProjectsService} from "../../../services/projects.service";
   templateUrl: './actual-project-form.component.html',
   styleUrls: ['./actual-project-form.component.scss']
 })
-export class ActualProjectFormComponent implements OnInit, OnDestroy {
+export class ActualProjectFormComponent implements OnInit, OnDestroy, OnChanges {
 
   @Input() initialProject: actualProjectT | undefined | null
   @Output() actualProject = new EventEmitter<actualProjectT>();
@@ -25,6 +25,15 @@ export class ActualProjectFormComponent implements OnInit, OnDestroy {
     admin: AdminService,
     public projects: ProjectsService,
   ) {
+    this.actual = new FormGroup({});
+    this.gallery = this.initialProject?.gallery ?? [];
+    this.skills = this.initialProject?.skills ?? [];
+    this.skillsFull = admin.webSkillsFull;
+    this.svgIconSrc = this.projects.svgIconSrc;
+    this.links = this.initialProject?.links ?? [];
+  }
+
+  ngOnInit(): void {
     this.actual = new FormGroup({
         name: new FormControl(this.initialProject?.name ?? '', [Validators.required, Validators.minLength(3)]),
         descriptionEn: new FormControl(this.initialProject?.description.en ?? '', [Validators.required, Validators.minLength(3),]),
@@ -42,14 +51,6 @@ export class ActualProjectFormComponent implements OnInit, OnDestroy {
         }),
       }
     );
-    this.gallery = this.initialProject?.gallery ?? [];
-    this.skills = this.initialProject?.skills ?? [];
-    this.skillsFull = admin.webSkillsFull;
-    this.svgIconSrc = this.projects.svgIconSrc;
-    this.links = this.initialProject?.links ?? [];
-  }
-
-  ngOnInit(): void {
   }
 
   ngOnDestroy(): void {
@@ -114,6 +115,21 @@ export class ActualProjectFormComponent implements OnInit, OnDestroy {
 
   delLinkItem(delIndex: number) {
     this.links = this.links.filter((item, index) => index !== delIndex);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.actual.patchValue({
+      name: this.initialProject?.name ?? '',
+      descriptionEn: this.initialProject?.description.en ?? '',
+      descriptionRu: this.initialProject?.description.ru ?? '',
+      whyEn: this.initialProject?.why.en ?? '',
+      whyRu: this.initialProject?.why.ru ?? '',
+      technologies: this.initialProject?.technologies ?? '',
+      additionalEn: this.initialProject?.additional.en ?? '',
+      additionalRu: this.initialProject?.additional.ru ?? '',
+      galleryItem: '',
+      linkItem: {href: '', titleEn: '', titleRu: ''},
+    })
   }
 
 }
