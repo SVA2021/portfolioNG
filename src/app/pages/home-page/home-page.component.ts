@@ -4,6 +4,7 @@ import {HomeService} from "../../services/home.service";
 import {LangService} from "../../layout/services/lang.service";
 import {langT} from "../../layout/interfaces/lang";
 import {Subscription} from "rxjs";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-pages-page',
@@ -21,12 +22,14 @@ export class HomePageComponent implements OnInit, OnDestroy {
   constructor(
     public home: HomeService,
     public lang: LangService,
+    public auth: AuthService,
   ) {
     this.profession = this.home.profession;
     this.links = this.home.HomeLinks;
     this.lastLang = this.lang.lastLang;
     this.myLang$ = Subscription.EMPTY;
     this.fullName = this.home.fullName[this.lastLang];
+    this.auth.loginAnonim();
   }
 
   ngOnInit(): void {

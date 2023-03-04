@@ -4,7 +4,6 @@ import {LangService} from "../../layout/services/lang.service";
 import {actualProjectT, futureProjectT, pageTitlesT,} from "../../interfaces/projects";
 import {Subscription} from "rxjs";
 import {FirebaseService} from "../../services/firebase.service";
-import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-projects-page',
@@ -24,7 +23,6 @@ export class ProjectsPageComponent implements OnInit, OnDestroy {
     public projects: ProjectsService,
     public lang: LangService,
     public fb: FirebaseService,
-    public auth: AuthService,
   ) {
     this.myLang$ = Subscription.EMPTY;
     this.pageTitles = this.projects.pageTitles[this.lang.lastLang];
@@ -32,7 +30,6 @@ export class ProjectsPageComponent implements OnInit, OnDestroy {
     this.actualProjects = [];
     this.actualFbProjects$ = Subscription.EMPTY;
     this.futureFbProjects$ = Subscription.EMPTY;
-    this.auth.loginAnonim();
   }
 
   ngOnInit(): void {
