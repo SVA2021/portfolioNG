@@ -48,8 +48,8 @@ export class ContactFormComponent implements OnInit, OnDestroy, AfterContentChec
       this.warnings = this.contactFormService.contactForm[lang].warnings;
     });
     this.user$ = this.auth.user.subscribe(user => {
-      this.userName = user.displayName ?? '';
-      this.userEmail = user.email ?? '';
+      this.userName = user?.displayName ?? '';
+      this.userEmail = user?.email ?? '';
     });
     this.contacts = new FormGroup({
         name: new FormControl(this.userName ?? '', [Validators.required, Validators.minLength(3)]),
