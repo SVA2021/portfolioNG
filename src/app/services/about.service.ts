@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {aboutPageT,} from "../interfaces/about";
+import {webSkill} from "../interfaces/admin";
 
 const bioFullEng = `Hello. My name is Vitaliy, and I'm a self-taught Front-End Developer.
        I like the process of turning an idea into a real thing, detail, device.
@@ -31,11 +32,11 @@ export class AboutService {
     return this._svgIconSrc;
   }
 
-  get mySkills(): string[] {
+  get mySkills(): webSkill[] {
     return this._mySkills;
   }
 
-  private readonly _mySkills: string[]
+  private readonly _mySkills: webSkill[]
   private readonly _svgIconSrc: string
   private readonly _certificateImgSrc: string
 
@@ -44,7 +45,7 @@ export class AboutService {
   constructor() {
 
     this._mySkills = [
-      'html5', 'css3', 'js', 'git', 'markdown', 'cssModules', 'react', 'redux', 'sass', 'typescript',
+      'html5', 'css3', 'js', 'git', 'markdown', 'cssModules', 'react', 'redux', 'sass', 'typescript', 'angular', 'nextjs',
     ];
     this._svgIconSrc = 'assets/skills.svg';
     this._certificateImgSrc = 'https://ik.imagekit.io/sva/certificates/certificates_combo_1800.png';
