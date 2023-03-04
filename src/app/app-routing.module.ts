@@ -7,10 +7,11 @@ import {CertificatesPageComponent} from "./pages/certificates-page/certificates-
 import {ProjectsPageComponent} from "./pages/projects-page/projects-page.component";
 import {AdminPageComponent} from "./pages/admin-page/admin-page.component";
 import {LoginPageComponent} from "./pages/login-page/login-page.component";
+import {AuthGuard} from "./auth.guard";
 
 const routes: Routes = [
   {path: '', component: HomePageComponent},
-  {path: 'admin', component: AdminPageComponent},
+  {path: 'admin', component: AdminPageComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginPageComponent},
   {path: 'about', component: AboutPageComponent},
   {path: 'contacts', component: ContactPageComponent},

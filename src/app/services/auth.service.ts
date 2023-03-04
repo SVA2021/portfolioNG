@@ -10,17 +10,34 @@ export class AuthService {
 
   adminEmail = 'sofronov.vit@gmail.com'
   user: Observable<any>
+  userName: string
+  userEmail: string
 
   constructor(public auth: AngularFireAuth) {
     this.user = this.auth.user;
+    this.userName = '';
+    this.userEmail = '';
   }
 
   login() {
-    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .then((res) => {
+        this.userName = res.user?.displayName ?? '';
+        this.userEmail = res.user?.email ?? '';
+      })
+      .catch(e => {
+        console.log(e);
+        this.userName = '';
+        this.userEmail = '';
+      })
   }
 
   logout() {
-    this.auth.signOut();
+    this.auth.signOut()
+      .finally(() => {
+        this.userName = '';
+        this.userEmail = '';
+      });
     this.user = this.auth.user;
   }
 
@@ -28,8 +45,8 @@ export class AuthService {
     return !!this.auth.user;
   }
 
-  // isAdmin() {
-  //   return this.auth.user.subscribe(user => user?.email === this.adminEmail)
-  // }
+  isAdmin() {
+    return this.userEmail === this.adminEmail
+  }
 
 }
