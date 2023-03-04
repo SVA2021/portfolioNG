@@ -49,4 +49,8 @@ export class AuthService {
     return this.userEmail === this.adminEmail
   }
 
+  loginAnonim() {
+    this.auth.signInAnonymously();
+  }
+
 }
