@@ -29,7 +29,7 @@ export class HomePageComponent implements OnInit, OnDestroy {
     this.lastLang = this.lang.lastLang;
     this.myLang$ = Subscription.EMPTY;
     this.fullName = this.home.fullName[this.lastLang];
-    this.auth.loginAnonim();
+    if (!this.auth.isLogged()) this.auth.loginAnonim();
   }
 
   ngOnInit(): void {
