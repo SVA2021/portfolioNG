@@ -78,10 +78,12 @@ export class ContactFormComponent implements OnInit, OnDestroy, AfterContentChec
   }
 
   ngAfterContentChecked(): void {
-    this.contacts.patchValue({
-      name: this.userName ?? '',
-      email: this.userEmail ?? '',
-    })
+    if (this.userName && this.userEmail) {
+      this.contacts.patchValue({
+        name: this.userName ?? '',
+        email: this.userEmail ?? '',
+      })
+    }
   }
 
 }
