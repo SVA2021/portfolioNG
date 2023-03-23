@@ -15,8 +15,8 @@ export class FirebaseService {
   constructor(
     private store: AngularFirestore
   ) {
-    this.actualProjectsFb$ = this.store.collection('actual').valueChanges({idField: 'id'}) as Observable<actualProjectT[]>;
-    this.futureProjectsFb$ = this.store.collection('future').valueChanges({idField: 'id'}) as Observable<futureProjectT[]>;
+    this.actualProjectsFb$ = this.store.collection('actual', ref => ref.orderBy('id', "desc")).valueChanges({}) as Observable<actualProjectT[]>;
+    this.futureProjectsFb$ = this.store.collection('future', ref => ref.orderBy('id', "desc")).valueChanges({}) as Observable<futureProjectT[]>;
   }
 
   private addProject(projectMode: projectMode, project: actualProjectT | futureProjectT) {
