@@ -1,6 +1,13 @@
 @import 'variables';
 @import 'mixins';
 
+:host-context(a:hover) {
+  .icon__svg {
+    stroke: $orange;
+    fill: $orange;
+  }
+}
+
 .icon__svg {
   margin: $offset-basic;
   display: block;
